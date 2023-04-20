@@ -1,1 +1,15 @@
-<p>face-snap works!</p>
+<div class="face-snap-card" [ngClass]="{snapped: buttonText === 'Oops, un snap !'}">
+  <h2>{{faceSnap.title | uppercase}}</h2>
+  <p>Mis en ligne {{faceSnap.createdDate | date: 'à HH:mm, le d MMMM yyyy'}}</p>
+  <!-- associe les valeurs des "propriétés" TypeScript aux [attributs] de l'élément HTML -->
+  <img [src] = "faceSnap.imageUrl" [alt] = 'faceSnap.title'>
+
+  <p *ngIf="faceSnap.location">Photo prise à {{faceSnap.location}}.</p>
+  <p>{{faceSnap.description}}</p>
+  <p>
+    <button (click)="onSnap()">{{buttonText}}</button>
+    <span [ngStyle]="{color : 'rgb(0,' + faceSnap.snaps + ',0)' }"> 🤌 {{faceSnap.snaps}} </span>
+  </p>
+
+</div>
+
